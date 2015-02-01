@@ -14,12 +14,38 @@ module.exports = function(req, res, next) {
   // or if this is the last policy, the controller
   
   var token = new Buffer(req.get('token'), 'base64').toString('ascii');
+  var user = req.get('user');
+  var key = '888';
+  var uid = -1;
   
-  //console.log( token + " " + req.session.authenticated);
+  if(user == 'admin'){
+	uid = 22;
   
-  if (req.session.authenticated == token) {
-    return next();
   }
   
-  return res.forbidden('You are not permitted to perform this action.');
+  return ApiKeys.find().where({user_id: uid}).exec(function(err,obs){
+		
+		console.log(obs);
+		if(err != null)
+		{
+			//console.log(err);
+			return res.serverError();
+		}
+		
+		
+		console.log(obs);
+		key = obs[0].key;
+		
+		//console.log( token + " " + key);			
+		
+		if (key == token) {
+			//console.log("authenticated");
+			return next();
+		}
+		else{
+			return res.forbidden('You are not permitted to perform this action.');
+		}
+		
+	});
+  
 };

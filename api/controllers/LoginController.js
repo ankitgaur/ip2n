@@ -15,7 +15,7 @@ module.exports = {
   authenticate: function (req, res) {
     
 	var temp = req.get('Authorization');
-
+	
 	if(temp!=null && temp!='')
 	{
 		var authHead = temp.split(' ');
@@ -25,10 +25,21 @@ module.exports = {
 		if(decoded[0]=='admin' && decoded[1]=='admin'){
 			//req.session.authenticated = true;
 			var uuid = require('node-uuid');
-			req.session.authenticated = uuid.v4();
-			return res.json({
-				token: req.session.authenticated
-			});
+			
+			var obj = {user_id: parseInt('22'),key: uuid.v4(),created_on: new Date()};
+			flag = false;						
+			return ApiKeys.create(obj,function(err,model){
+			    
+				if (err) {
+					console.log("API Key could not be created " + err);
+					return res.serverError();
+				}else {
+						console.log("Successfully Created Api Key for " + model.user_id);		
+						return res.json({
+							id: uuid.v4()
+						});
+					}
+			});					
 		}
 	}	
 	
