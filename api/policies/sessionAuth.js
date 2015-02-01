@@ -25,7 +25,7 @@ module.exports = function(req, res, next) {
   
   return ApiKeys.find().where({user_id: uid}).exec(function(err,obs){
 		
-		console.log(obs);
+		//console.log(obs);
 		if(err != null)
 		{
 			//console.log(err);
@@ -33,13 +33,13 @@ module.exports = function(req, res, next) {
 		}
 		
 		
-		console.log(obs);
+		//console.log(obs);
 		key = obs[0].key;
 		
-		//console.log( token + " " + key);			
+		console.log( token + " " + key);			
 		
 		if (key == token) {
-			//console.log("authenticated");
+			console.log("authenticated");
 			return next();
 		}
 		else{
