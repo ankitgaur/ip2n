@@ -20,26 +20,21 @@ module.exports = {
 	{
 		var authHead = temp.split(' ');
 		var decoded = new Buffer(authHead[1], 'base64').toString('ascii').split(':');
-	
+	    
 		//Logic for authentication
 		if(decoded[0]=='admin' && decoded[1]=='admin'){
 			//req.session.authenticated = true;
 			var uuid = require('node-uuid');
-			
-			var obj = {user_id: parseInt('22'),key: uuid.v4(),created_on: new Date()};
+			var key = uuid.v4();
+			var uid = 22;
+			//var obj = {user_id: uid,key: uuid.v4(),created_on: new Date()};
 			flag = false;						
-			return ApiKeys.create(obj,function(err,model){
-			    
-				if (err) {
-					console.log("API Key could not be created " + err);
-					return res.serverError();
-				}else {
-						console.log("Successfully Created Api Key for " + model.user_id);		
-						return res.json({
-							id: uuid.v4()
-						});
-					}
-			});					
+			return ApiKeys.query("REPLACE INTO ip2n_nigeria_incidents.api_keys VALUES("+uid+",'"+ key +"',CURRENT_TIMESTAMP)", function(err, results) {
+				if (err) return res.serverError(err);
+				return res.json({
+							id: key
+				});
+			});			
 		}
 	}	
 	
