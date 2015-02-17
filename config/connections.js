@@ -54,7 +54,7 @@ module.exports.connections = {
     user: 'ipledge_user',
     password: 'NewpassWord.1',
     database: 'ipledge_database'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
