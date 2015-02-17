@@ -70,7 +70,13 @@ module.exports.routes = {
   'get /incidentCategories/:id' : 'IncidentCategoriesController.getById',
   'get /incidentCategories/type/:id' : 'IncidentCategoriesController.getAllForType',
   'put /incidentCategories' : 'IncidentCategoriesController.update',
-  'delete /incidentCategories/:id' : 'IncidentCategoriesController.delete'
+  'delete /incidentCategories/:id' : 'IncidentCategoriesController.delete',
+  
+  'get /news/:pg' : 'JosContentController.getNews',
+  'get /entertainment/:pg' : 'JosContentController.getEntertainment',
+  'get /news/latest/:id' : 'JosContentController.getLatestNews',
+  'get /entertainment/latest/:id' : 'JosContentController.getLatestEntertainment'
+  
   
   /***************************************************************************
   *                                                                          *
