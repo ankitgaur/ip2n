@@ -13,11 +13,12 @@ module.exports = {
   getNews: function (req, res) {
   
     var pg = req.param('pg');
+	var count = req.param('count');
     var sql = "SELECT a.id as id,a.title as title,"
 			  +" a.alias as alias,a.introtext as introtext,b.name as user," 
 			  +" a.created as created FROM jos_content a, jos_users b"
 			  +" WHERE a.created_by=b.id and a.sectionid = 1"
-			  +" and a.state = 1 order by id desc LIMIT " + pg +",10";
+			  +" and a.state = 1 order by id desc LIMIT " + pg +","+count;
     console.log("Fetching News");
 	JosContent.query(sql,function(err,content){
 		
@@ -37,11 +38,12 @@ module.exports = {
   getEntertainment: function (req, res) {
   
     var pg = req.param('pg');
+	var count = req.param('count');
     var sql = "SELECT a.id as id,a.title as title,"
 			  +" a.alias as alias,a.introtext as introtext,b.name as user," 
 			  +" a.created as created FROM jos_content a, jos_users b"
 			  +" WHERE a.created_by=b.id and a.sectionid = 10"
-			  +" and a.state = 1 order by id desc LIMIT " + pg +",10";
+			  +" and a.state = 1 order by id desc LIMIT " + pg +","+count;
     console.log("Fetching News");
 	JosContent.query(sql,function(err,content){
 		

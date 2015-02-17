@@ -101,7 +101,23 @@ module.exports = {
 	});
   },
 
-
+  getPage: function (req, res) {
+    var pg = req.param('pg');
+	var count = req.param('count');
+	var sql = "Select * from incidents order by id desc LIMIT " + pg +","+count;
+    console.log("Fetching all Incidents pg = " + pg + " count = " + count);
+	Incidents.query(sql,function(err,incidents){
+		
+		if(err != null)
+		{
+			console.log(err);
+			return res.serverError();
+		}
+		if(incidents === undefined) return res.notFound();
+		res.json(incidents);
+	});
+  },
+  
   /**
    * `IncidentsController.getById()`
    */

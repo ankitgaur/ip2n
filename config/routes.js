@@ -54,6 +54,7 @@ module.exports.routes = {
   
   'post /incidents': 'IncidentsController.create',  
   'get /incidents': 'IncidentsController.getAll',
+  'get /incidents/page/:pg/:count': 'IncidentsController.getPage',
   'get /incidents/:id' : 'IncidentsController.getById',
   'put /incidents' : 'IncidentsController.update',
   'delete /incidents/:id' : 'IncidentsController.delete',
@@ -72,8 +73,8 @@ module.exports.routes = {
   'put /incidentCategories' : 'IncidentCategoriesController.update',
   'delete /incidentCategories/:id' : 'IncidentCategoriesController.delete',
   
-  'get /news/:pg' : 'JosContentController.getNews',
-  'get /entertainment/:pg' : 'JosContentController.getEntertainment',
+  'get /news/:pg/:count' : 'JosContentController.getNews',
+  'get /entertainment/:pg/:count' : 'JosContentController.getEntertainment',
   'get /news/latest/:id' : 'JosContentController.getLatestNews',
   'get /entertainment/latest/:id' : 'JosContentController.getLatestEntertainment'
   
