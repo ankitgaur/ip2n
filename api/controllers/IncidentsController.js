@@ -118,6 +118,23 @@ module.exports = {
 	});
   },
   
+  getLatest: function (req, res) {
+    var id = req.param('id');
+	
+	var sql = "Select * from incidents order by id desc where id > " + id;
+    console.log("Fetching latest Incidents ");
+	Incidents.query(sql,function(err,incidents){
+		
+		if(err != null)
+		{
+			console.log(err);
+			return res.serverError();
+		}
+		if(incidents === undefined) return res.notFound();
+		res.json(incidents);
+	});
+  },
+  
   /**
    * `IncidentsController.getById()`
    */

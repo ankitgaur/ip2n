@@ -56,6 +56,7 @@ module.exports.routes = {
   'get /incidents': 'IncidentsController.getAll',
   'get /incidents/page/:pg/:count': 'IncidentsController.getPage',
   'get /incidents/:id' : 'IncidentsController.getById',
+  'get /incidents/latest/:id' : 'IncidentsController.getLatest',
   'put /incidents' : 'IncidentsController.update',
   'delete /incidents/:id' : 'IncidentsController.delete',
   
