@@ -68,7 +68,8 @@ module.exports = {
 			  +" a.created as created FROM jos_content a, jos_users b"
 			  +" WHERE a.created_by=b.id and a.sectionid = 1"
 			  +" and a.state = 1 and a.id > " + id + " order by id desc";
-    console.log("Fetching Latest News");
+    
+	console.log("Fetching Latest News");
 	JosContent.query(sql,function(err,content){
 		
 		if(err != null)

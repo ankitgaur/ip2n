@@ -121,7 +121,7 @@ module.exports = {
   getLatest: function (req, res) {
     var id = req.param('id');
 	
-	var sql = "Select * from incidents order by id desc where id > " + id;
+	var sql = "Select * from incidents where id > " + id + " order by id desc";
     console.log("Fetching latest Incidents ");
 	Incidents.query(sql,function(err,incidents){
 		

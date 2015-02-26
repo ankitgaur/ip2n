@@ -74,10 +74,11 @@ module.exports.routes = {
   'put /incidentCategories' : 'IncidentCategoriesController.update',
   'delete /incidentCategories/:id' : 'IncidentCategoriesController.delete',
   
+  'get /news/latest/:id' : 'JosContentController.getLatestNews',
+  'get /entertainment/latest/:id' : 'JosContentController.getLatestEntertainment'  
   'get /news/:pg/:count' : 'JosContentController.getNews',
   'get /entertainment/:pg/:count' : 'JosContentController.getEntertainment',
-  'get /news/latest/:id' : 'JosContentController.getLatestNews',
-  'get /entertainment/latest/:id' : 'JosContentController.getLatestEntertainment'
+  
   
   
   /***************************************************************************
