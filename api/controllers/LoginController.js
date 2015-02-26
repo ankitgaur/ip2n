@@ -35,6 +35,19 @@ module.exports = {
 							id: key
 				});
 			});			
+		}else if(decoded[0]=='ip2n' && decoded[1]=='ip2n'){
+			//req.session.authenticated = true;
+			var uuid = require('node-uuid');
+			var key = uuid.v4();
+			var uid = 24;
+			//var obj = {user_id: uid,key: uuid.v4(),created_on: new Date()};
+			flag = false;						
+			return ApiKeys.query("REPLACE INTO ip2n_nigeria_incidents.api_keys VALUES("+uid+",'"+ key +"',CURRENT_TIMESTAMP)", function(err, results) {
+				if (err) return res.serverError(err);
+				return res.json({
+							id: key
+				});
+			});			
 		}
 	}	
 	
