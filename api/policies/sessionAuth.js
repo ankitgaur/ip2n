@@ -22,6 +22,9 @@ module.exports = function(req, res, next) {
 	uid = 22;
   
   }
+  else if(user == 'admin'){
+	uid = 24;
+  }
   
   return ApiKeys.find().where({user_id: uid}).exec(function(err,obs){
 		
