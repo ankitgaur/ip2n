@@ -18,11 +18,12 @@ module.exports = function(req, res, next) {
   var key = '888';
   var uid = -1;
   
+  console.log( "Authenticating " + user);
   if(user == 'admin'){
 	uid = 22;
   
   }
-  else if(user == 'admin'){
+  else if(user == 'ip2n'){
 	uid = 24;
   }
   
